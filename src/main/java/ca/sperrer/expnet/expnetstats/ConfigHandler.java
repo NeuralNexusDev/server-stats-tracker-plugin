@@ -1,4 +1,4 @@
-package ca.sperrer.forge.expnetstats;
+package ca.sperrer.expnet.expnetstats;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

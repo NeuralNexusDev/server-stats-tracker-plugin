@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'ExpNetStats-Forge-1.12.2'
+rootProject.name = 'ExpNetStats-Forge-1.19.2'

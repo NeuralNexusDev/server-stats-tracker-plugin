@@ -2,12 +2,13 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-group = 'ca.sperrer.forge'
+
+group = 'ca.sperrer.expnet.expnetstats'
 version = '1.0.2'
 
 java {
-    archivesBaseName = 'ExpNetStats-Forge-1.12.2'
-    toolchain.languageVersion = JavaLanguageVersion.of(8)
+    archivesBaseName = 'ExpNetStats-Forge-1.19.2'
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
 minecraft {
@@ -24,7 +25,7 @@ minecraft {
     //
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'stable', version: '39-1.12'
+    mappings channel: 'official', version: '1.19.2'
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -47,9 +48,11 @@ minecraft {
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            property 'forge.enabledGameTestNamespaces', 'ExpNetStats-Forge-1.19.2'
 
             mods {
-                'expnetstats - forge - 1.12.2' {
+                'expnetstats - forge - 1.19.2' {
                     source sourceSets.main
                 }
             }
@@ -62,9 +65,46 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
+            property 'forge.enabledGameTestNamespaces', 'ExpNetStats-Forge-1.19.2'
 
             mods {
-                'expnetstats - forge - 1.12.2' {
+                'expnetstats - forge - 1.19.2' {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        // This run config launches GameTestServer and runs all registered gametests, then exits.
+        // By default, the server will crash when no gametests are provided.
+        // The gametest system is also enabled by default for other run configs under the /test command.
+        gameTestServer {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+
+            property 'forge.logging.console.level', 'debug'
+
+            property 'forge.enabledGameTestNamespaces', 'ExpNetStats-Forge-1.19.2'
+
+            mods {
+                'expnetstats - forge - 1.19.2' {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+
+            property 'forge.logging.console.level', 'debug'
+
+            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+            args '--mod', 'expnetstats-forge-1.19.2', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
+            mods {
+                'expnetstats - forge - 1.19.2' {
                     source sourceSets.main
                 }
             }
@@ -86,11 +126,12 @@ repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     mavenCentral()
 }
+
 dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.38'
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -106,14 +147,13 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'com.neovisionaries:nv-websocket-client:2.14'
     compileOnly 'me.lucko:spark-api:0.1-SNAPSHOT'
-    //compile files('libs/nv-websocket-client-2.14.jar') // For one .jar file in folder
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "expnetstats-forge-1.12.2",
+                "Specification-Title"     : "expnetstats-forge-1.19.2",
                 "Specification-Vendor"    : "p0t4t0sandwich",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,

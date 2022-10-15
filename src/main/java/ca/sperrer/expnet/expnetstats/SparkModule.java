@@ -1,4 +1,4 @@
-package ca.sperrer.forge.expnetstats;
+package ca.sperrer.expnet.expnetstats;
 
 import me.lucko.spark.api.Spark;
 import me.lucko.spark.api.SparkProvider;
