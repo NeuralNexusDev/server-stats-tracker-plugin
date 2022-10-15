@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "expnetstats-forge-1.12.2",
+    "name": "ExpNetStats-Forge-1.12.2",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "p0t4t0sandwich"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
