@@ -8,7 +8,7 @@ public class ForgeEventHandler {
     int count = 0;
     @SubscribeEvent
     public void servertick(TickEvent.ServerTickEvent event) {
-        if (count % 2400 == 0) {
+        if (count % 40 == 0) {
             try {
                 WSClient<MinecraftServer> ws = new WSClientForge();
                 ws.send(event.getServer(), "config/ExpNetStats.json");
