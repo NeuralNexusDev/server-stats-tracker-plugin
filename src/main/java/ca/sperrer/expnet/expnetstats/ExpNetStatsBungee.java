@@ -19,6 +19,6 @@ public final class ExpNetStatsBungee extends Plugin {
             } catch (Exception e) {
                 getLogger().info("Could not connect to the ExpNetStats backend, please contact ThePotatoKing#3452");
             }
-        }, 0, 1, TimeUnit.MINUTES);
+        }, 0, 1, TimeUnit.SECONDS);
     }
 }
