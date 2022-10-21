@@ -27,7 +27,7 @@ public class FabricMixin implements ExpNetStats.FabricMixinAccess {
 			catch (Exception e) {
 				ExpNetStats.LOGGER.info("Could not connect to the ExpNetStats backend, please contact ThePotatoKing#3452");
 			}
-			ticksUntilSomething = 1200L;
+			ticksUntilSomething = 20L;
 		}
 	}
 	@Override
